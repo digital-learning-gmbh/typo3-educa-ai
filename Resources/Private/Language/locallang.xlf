@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2025-08-08T08:00:00Z" product-name="educa_ai_typo3_seo">
+        <header/>
+        <body>
+            <trans-unit id="scheduler.title">
+                <source>Calculate SEO Data</source>
+                <target>SEO-Daten berechnen</target>
+            </trans-unit>
+            <trans-unit id="scheduler.description">
+                <source>This task calculates SEO data for all relevant pages. This can take some time.</source>
+                <target>Dieser Task berechnet die SEO-Daten für alle relevanten Seiten. Dies kann einige Zeit dauern.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

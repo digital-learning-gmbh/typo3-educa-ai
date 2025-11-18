@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2025-08-14T21:00:00Z" product-name="educa_ai_typo3_seo">
+        <header/>
+        <body>
+            <!-- Label für das Formularfeld in der TCA -->
+            <trans-unit id="pages.tx_educa_ai_typo3_seo_calculate" xml:space="preserve">
+                <source>KI-Metadaten</source>
+                <target>KI-Metadaten</target>
+            </trans-unit>
+
+            <!-- Text auf dem Button selbst -->
+            <trans-unit id="pages.tx_educa_ai_typo3_seo_calculate.buttonLabel" xml:space="preserve">
+                <source>Fehlende Metadaten berechnen</source>
+                <target>Fehlende Metadaten berechnen</target>
+            </trans-unit>
+
+            <!-- ======================================= -->
+            <!-- Texte für JavaScript-Benachrichtigungen -->
+            <!-- ======================================= -->
+
+            <trans-unit id="js.notification.calculating.title" xml:space="preserve">
+                <source>Berechnung gestartet..</source>
+                <target>Berechnung gestartet...</target>
+            </trans-unit>
+            <trans-unit id="js.notification.calculating.message" xml:space="preserve">
+                <source>Die Metadaten werden jetzt berechnet.</source>
+                <target>Die Metadaten werden jetzt berechnet.</target>
+            </trans-unit>
+
+            <trans-unit id="js.notification.success.title" xml:space="preserve">
+                <source>Erfolgreich!</source>
+                <target>Erfolgreich!</target>
+            </trans-unit>
+            <trans-unit id="js.notification.success.message" xml:space="preserve">
+                <source>Die Seite wurde erfolgreich aktualisiert.</source>
+                <target>Die Seite wurde erfolgreich aktualisiert.</target>
+            </trans-unit>
+            
+            <trans-unit id="js.notification.error.title" xml:space="preserve">
+                <source>Fehler</source>
+                <target>Fehler</target>
+            </trans-unit>
+            <trans-unit id="js.notification.error.message" xml:space="preserve">
+                <source>Bei der Berechnung ist ein Fehler aufgetreten.</source>
+                <target>Bei der Berechnung ist ein Fehler aufgetreten.</target>
+            </trans-unit>
+
+
+<trans-unit id="pages.tx_educa_ai_typo3_seo_calculate.buttonLabelOverride" resname="pages.tx_educa_ai_typo3_seo_calculate.buttonLabelOverride">
+                <source>Metadaten berechnen &amp; alle Felder überschreiben</source>
+            </trans-unit>
+
+            <!-- NEU: Spezifische Nachrichten für den "Überschreiben"-Prozess -->
+            <trans-unit id="js.notification.calculating.override.message" resname="js.notification.calculating.override.message">
+                <source>KI Berechnung wird durchgeführt.</source>
+            </trans-unit>
+            <trans-unit id="js.notification.success.override.message" resname="js.notification.success.override.message">
+                <source>Daten wurden erfolgreich berechnet</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

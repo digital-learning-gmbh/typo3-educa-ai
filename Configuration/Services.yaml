@@ -1,0 +1,24 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  EducaAiTypo3Seo\EducaAiTypo3Seo\:
+    resource: '../Classes/*'
+
+    # Wir machen unseren Service explizit "public", damit GeneralUtility::makeInstance ihn finden kann.
+  EducaAiTypo3Seo\EducaAiTypo3Seo\Service\SeoCalculationService:
+    public: true
+
+  # Der Controller muss nicht public sein, da er direkt über die Route aufgerufen wird.
+  # Aber es schadet auch nicht, ihn explizit zu definieren, wenn man möchte.
+  EducaAiTypo3Seo\EducaAiTypo3Seo\Controller\AjaxController:
+    public: true
+
+  # This explicitly tags your command. autoconfigure: true usually handles this,
+  # but being explicit can help with debugging.
+  EducaAiTypo3Seo\EducaAiTypo3Seo\Command\SeoCalculationCommand:
+    tags:
+      - name: console.command
+        command: 'educa-ai:seo:calculate'

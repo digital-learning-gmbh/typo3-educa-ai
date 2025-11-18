@@ -1,0 +1,8 @@
+# cat=basic; type=string; label=API Endpoint URL: The full URL for the chat completions endpoint.
+apiUrl = https://api.educaai.de/v1/chat/completions
+
+# cat=basic; type=string; label=API Key (Bearer Token): Your secret API key.
+apiKey = 
+
+# cat=basic; type=string; label=AI Model: The model to use for the generation.
+apiModel = RedHatAI/Mistral-Small-3.1-24B-Instruct-2503-quantized.w4a16

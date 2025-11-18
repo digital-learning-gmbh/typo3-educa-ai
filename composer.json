@@ -1,0 +1,26 @@
+{
+  "name": "educa-ai/typo3-seo",
+  "type": "typo3-cms-extension",
+  "description": "Berechnet SEO-Daten mittels Planer-Task und Button, potenziell mit KI-Unterstützung.",
+  "authors": [
+    {
+      "name": "Benjamin Ledel",
+      "role": "Developer"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "typo3/cms-core": "^11.5 || ^12.4",
+    "typo3/cms-backend": "^11.5 || ^12.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "EducaAiTypo3Seo\\EducaAiTypo3Seo\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "educa_ai_typo3_seo"
+    }
+  }
+}
