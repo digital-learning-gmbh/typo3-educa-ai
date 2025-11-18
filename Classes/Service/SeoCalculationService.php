@@ -386,7 +386,7 @@ class SeoCalculationService
     {
         $apiKey = $this->extensionConfiguration['apiKey'] ?? '';
         $apiUrl = $this->extensionConfiguration['apiUrl'] ?? '';
-        $apiModel = 'gpt-oss-120b';
+        $apiModel = $this->extensionConfiguration['apiModel'] ?? 'gpt-oss-120b';
 
         if (empty($apiKey) || empty($apiUrl)) {
             $this->logger->error('API key or API URL is not configured in extension settings.', $logContext);
