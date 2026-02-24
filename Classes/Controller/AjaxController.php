@@ -4,11 +4,15 @@ namespace EducaAiTypo3Seo\EducaAiTypo3Seo\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use EducaAiTypo3Seo\EducaAiTypo3Seo\Service\SeoCalculationService;
 
 class AjaxController
 {
+    public function __construct(
+        private readonly SeoCalculationService $seoCalculationService,
+    ) {
+    }
+
     /**
      * AJAX Action to trigger the SEO calculation for a specific page.
      *
@@ -26,10 +30,7 @@ class AjaxController
      */
     public function calculateAction(ServerRequestInterface $request): ResponseInterface
     {
-        // 1. Get the service from TYPO3's DI container
-        $seoService = GeneralUtility::makeInstance(SeoCalculationService::class);
-
-        // 2. Get parameters from the request body
+        // 1. Get parameters from the request body
         $parsedBody = $request->getParsedBody();
         $pageId = (int)($parsedBody['page'] ?? 0);
         
@@ -43,11 +44,11 @@ class AjaxController
 
         // 3. Execute the service logic with the provided parameters.
         // The second parameter 'true' instructs the service to directly update the database.
-        $success = $seoService->calculateForPage($pageId, true, $allowOverride);
+        $success = $this->seoCalculationService->calculateForPage($pageId, true, $allowOverride);
 
         if ($success) {
             // 4. Get the result from the service. This is now an array of all generated fields.
-            $generatedData = $seoService->getLastGeneratedData();
+            $generatedData = $this->seoCalculationService->getLastGeneratedData();
 
             if (!empty($generatedData)) {
                 $fieldCount = count($generatedData);

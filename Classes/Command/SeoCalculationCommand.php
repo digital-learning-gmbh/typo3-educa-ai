@@ -2,6 +2,7 @@
 namespace EducaAiTypo3Seo\EducaAiTypo3Seo\Command;
 
 use EducaAiTypo3Seo\EducaAiTypo3Seo\Service\SeoCalculationService;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +11,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 
+#[AsCommand(
+    name: 'educa-ai:seo:calculate',
+    description: 'Startet die SEO-Berechnung für einen Seitenbaum.',
+)]
 class SeoCalculationCommand extends Command
 {
     /**
@@ -34,9 +39,7 @@ class SeoCalculationCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setName('educa-ai:seo:calculate');
         $this->setHelp('Berechnet SEO-Daten für eine gegebene Startseite und alle ihre Unterseiten rekursiv. Standardmäßig im Dry-Run-Modus und ergänzt vorhandene Felder.');
-        $this->setDescription('Startet die SEO-Berechnung für einen Seitenbaum.');
 
         $this->addArgument(
             'rootPageId',
@@ -122,7 +125,7 @@ class SeoCalculationCommand extends Command
         $pageRecord = $queryBuilder
             ->select('uid', 'title')
             ->from('pages')
-            ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \PDO::PARAM_INT)))
+            ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)))
             ->andWhere($queryBuilder->expr()->eq('hidden', 0))
             ->andWhere($queryBuilder->expr()->eq('deleted', 0))
             ->executeQuery()
@@ -157,7 +160,7 @@ class SeoCalculationCommand extends Command
         $subpages = $queryBuilder
             ->select('uid')
             ->from('pages')
-            ->where($queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pageId, \PDO::PARAM_INT)))
+            ->where($queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($pageId, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)))
             ->andWhere($queryBuilder->expr()->eq('hidden', 0))
             ->andWhere($queryBuilder->expr()->eq('deleted', 0))
             ->orderBy('sorting')

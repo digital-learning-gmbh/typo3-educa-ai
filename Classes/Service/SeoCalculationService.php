@@ -195,7 +195,7 @@ class SeoCalculationService
             $pageRecord = $queryBuilder
                 ->select('uid', 'title', 'seo_title', 'description', 'abstract', 'keywords')
                 ->from('pages')
-                ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \PDO::PARAM_INT)))
+                ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($pageId, \TYPO3\CMS\Core\Database\Connection::PARAM_INT)))
                 ->executeQuery()
                 ->fetchAssociative();
 
