@@ -6,3 +6,6 @@ apiKey =
 
 # cat=basic; type=string; label=AI Model: The model to use for the generation.
 apiModel = RedHatAI/Mistral-Small-3.1-24B-Instruct-2503-quantized.w4a16
+
+# cat=basic; type=boolean; label=Bereits gefüllte Felder überspringen: Wenn aktiviert, werden bei der Berechnung fehlender Metadaten Felder übersprungen, die bereits einen Wert enthalten. Wenn deaktiviert, werden gefüllte Felder intelligent ergänzt/optimiert.
+skipFilledFields = 1
