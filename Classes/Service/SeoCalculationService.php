@@ -78,6 +78,9 @@ class SeoCalculationService
         $dataToUpdate = [];
         $this->lastGeneratedData = [];
 
+        // Konfiguration: Sollen bereits gefüllte Felder übersprungen werden?
+        $skipFilledFields = (bool)($this->extensionConfiguration['skipFilledFields'] ?? true);
+
         // 2. Gehe jedes Zielfeld durch und generiere/ergänze den Inhalt.
         foreach (self::TARGET_FIELDS as $fieldName) {
             $existingValue = trim($pageContext['pageRecord'][$fieldName] ?? '');
@@ -88,6 +91,17 @@ class SeoCalculationService
                 $pageId,
                 empty($existingValue) ? 'no' : 'yes'
             ));
+
+            // Wenn skipFilledFields aktiv ist und wir nicht im Override-Modus sind,
+            // überspringe Felder, die bereits einen Wert enthalten.
+            if ($skipFilledFields && !$allowOverride && !empty($existingValue)) {
+                $this->logger->info(sprintf(
+                    'Skipping field "%s" for page %d: already filled and skipFilledFields is enabled.',
+                    $fieldName,
+                    $pageId
+                ));
+                continue;
+            }
 
             // Wähle das passende Prompt-Template für das aktuelle Feld.
             // Die Logik, ob neu erstellt oder ergänzt wird, steckt in den Build-Methoden.
